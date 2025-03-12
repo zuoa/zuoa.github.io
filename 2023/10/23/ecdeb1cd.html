@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="baidu-site-verification" content="codeva-JaPTqP5M1v" />
+    <meta name="description" content="趣闻口型几乎完美、还能卡点,霉霉说地道中文的视频火了,背后AI工具原来是它 文章介绍了 HeyGen 这个可以将文字转换为视频的工具,并提供了一些开源的替代方案,如 whisper、GPT、so-vits-svc 和 GeneFace++。  “流亡”的Telegram创始人及其加密野心等级保护现场测评工具 - Golin 这是一个关于Golin项目的文章，主要介绍了它的功能、特点和使用方法。Go">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TechnicalDiscovery 2023 #43">
+<meta property="og:url" content="https://memo.appcase.cn/2023/10/23/ecdeb1cd.html">
+<meta property="og:site_name" content="Coder Memo">
+<meta property="og:description" content="趣闻口型几乎完美、还能卡点,霉霉说地道中文的视频火了,背后AI工具原来是它 文章介绍了 HeyGen 这个可以将文字转换为视频的工具,并提供了一些开源的替代方案,如 whisper、GPT、so-vits-svc 和 GeneFace++。  “流亡”的Telegram创始人及其加密野心等级保护现场测评工具 - Golin 这是一个关于Golin项目的文章，主要介绍了它的功能、特点和使用方法。Go">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-23T12:52:39.000Z">
+<meta property="article:modified_time" content="2025-03-12T08:01:15.576Z">
+<meta property="article:author" content="YuJian">
+<meta property="article:tag" content="TechnicalDiscovery">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>TechnicalDiscovery 2023 #43</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2023/10/31/72ba246e.html"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/10/17/9bd9815b.html"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&text=TechnicalDiscovery 2023 #43"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&title=TechnicalDiscovery 2023 #43"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&is_video=false&description=TechnicalDiscovery 2023 #43"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=TechnicalDiscovery 2023 #43&body=Check out this article: https://memo.appcase.cn/2023/10/23/ecdeb1cd.html"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&title=TechnicalDiscovery 2023 #43"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&title=TechnicalDiscovery 2023 #43"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&title=TechnicalDiscovery 2023 #43"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&title=TechnicalDiscovery 2023 #43"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&name=TechnicalDiscovery 2023 #43&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&t=TechnicalDiscovery 2023 #43"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%A3%E9%97%BB"><span class="toc-number">1.</span> <span class="toc-text">趣闻</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A3%E5%9E%8B%E5%87%A0%E4%B9%8E%E5%AE%8C%E7%BE%8E%E3%80%81%E8%BF%98%E8%83%BD%E5%8D%A1%E7%82%B9-%E9%9C%89%E9%9C%89%E8%AF%B4%E5%9C%B0%E9%81%93%E4%B8%AD%E6%96%87%E7%9A%84%E8%A7%86%E9%A2%91%E7%81%AB%E4%BA%86-%E8%83%8C%E5%90%8EAI%E5%B7%A5%E5%85%B7%E5%8E%9F%E6%9D%A5%E6%98%AF%E5%AE%83"><span class="toc-number">1.1.</span> <span class="toc-text">口型几乎完美、还能卡点,霉霉说地道中文的视频火了,背后AI工具原来是它</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E6%B5%81%E4%BA%A1%E2%80%9D%E7%9A%84Telegram%E5%88%9B%E5%A7%8B%E4%BA%BA%E5%8F%8A%E5%85%B6%E5%8A%A0%E5%AF%86%E9%87%8E%E5%BF%83"><span class="toc-number">1.2.</span> <span class="toc-text">“流亡”的Telegram创始人及其加密野心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%89%E7%BA%A7%E4%BF%9D%E6%8A%A4%E7%8E%B0%E5%9C%BA%E6%B5%8B%E8%AF%84%E5%B7%A5%E5%85%B7-Golin"><span class="toc-number">1.3.</span> <span class="toc-text">等级保护现场测评工具 - Golin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8EETL%E5%88%B0ELT-%E6%8F%AD%E7%A7%98%E7%81%AB%E5%B1%B1%E5%BC%95%E6%93%8EByteHouse%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.4.</span> <span class="toc-text">从ETL到ELT,揭秘火山引擎ByteHouse的技术实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%AF%AD%E9%9B%80-23-%E6%97%A5%E6%95%85%E9%9A%9C%E7%9A%84%E5%85%AC%E5%91%8A"><span class="toc-number">1.5.</span> <span class="toc-text">关于语雀 23 日故障的公告</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        TechnicalDiscovery 2023 #43
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">YuJian</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-10-23T12:52:39.000Z" class="dt-published" itemprop="datePublished">2023-10-23</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/TechnicalDiscovery/" rel="tag">TechnicalDiscovery</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="趣闻"><a href="#趣闻" class="headerlink" title="趣闻"></a>趣闻</h1><h2 id="口型几乎完美、还能卡点-霉霉说地道中文的视频火了-背后AI工具原来是它"><a href="#口型几乎完美、还能卡点-霉霉说地道中文的视频火了-背后AI工具原来是它" class="headerlink" title="口型几乎完美、还能卡点,霉霉说地道中文的视频火了,背后AI工具原来是它"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/NhjigPkWFnm-tdVbGZ-Q8Q">口型几乎完美、还能卡点,霉霉说地道中文的视频火了,背后AI工具原来是它</a></h2><blockquote>
+<p>文章介绍了 HeyGen 这个可以将文字转换为视频的工具,并提供了一些开源的替代方案,如 whisper、GPT、so-vits-svc 和 GeneFace++。</p>
+</blockquote>
+<h2 id="“流亡”的Telegram创始人及其加密野心"><a href="#“流亡”的Telegram创始人及其加密野心" class="headerlink" title="“流亡”的Telegram创始人及其加密野心"></a><a target="_blank" rel="noopener" href="https://finance.sina.cn/blockchain/2023-10-17/detail-imzrkyrm8917643.d.html">“流亡”的Telegram创始人及其加密野心</a></h2><h2 id="等级保护现场测评工具-Golin"><a href="#等级保护现场测评工具-Golin" class="headerlink" title="等级保护现场测评工具 - Golin"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/NIrGzZFZABfQU3BZcaAlQA">等级保护现场测评工具 - Golin</a></h2><blockquote>
+<p>这是一个关于Golin项目的文章，主要介绍了它的功能、特点和使用方法。Golin是一个集成了多种安全扫描功能的工具，可以进行弱口令检测、漏洞扫描、端口扫描、web目录扫描、子域名扫描等操作。它还支持等保模拟定级、自动化运维和基线核查等功能。文章给出了一些常用的启动参数和示例，以及注意事项和更新方法。</p>
+</blockquote>
+<h2 id="从ETL到ELT-揭秘火山引擎ByteHouse的技术实现"><a href="#从ETL到ELT-揭秘火山引擎ByteHouse的技术实现" class="headerlink" title="从ETL到ELT,揭秘火山引擎ByteHouse的技术实现"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/L6kV189btHB9SyDaefoDmA">从ETL到ELT,揭秘火山引擎ByteHouse的技术实现</a></h2><blockquote>
+<p>本文介绍了火山引擎ByteHouse是一款基于开源ClickHouse推出的云原生数据仓库，能够支持Extract-Load-Transform (ELT)的能力，从而使用户免于维护多套异构系统。文章分析了ELT场景下的三个痛点，并介绍了ByteHouse针对性的设计了三个功能，即长任务管理、异步提交和查询队列。文章还以SSB场景为例，展示了如何通过Transform的步骤，将事实表“打平”。</p>
+</blockquote>
+<h2 id="关于语雀-23-日故障的公告"><a href="#关于语雀-23-日故障的公告" class="headerlink" title="关于语雀 23 日故障的公告"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/WFLLU8R4bmiqv6OGa-QMcw">关于语雀 23 日故障的公告</a></h2><blockquote>
+<p>你好，这是必应。我可以帮你提取文章的正文的核心内容，去除存在广告嫌疑内容，缩写成60个字以内的中文概要。以下是我为你生成的概要：</p>
+<p>语雀因存储系统升级出现 bug，导致部分机器下线，数据存储运维团队紧急从备份恢复数据，经过数据校验和联调后，于22点恢复语雀全部服务，用户数据未丢失。</p>
+</blockquote>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%A3%E9%97%BB"><span class="toc-number">1.</span> <span class="toc-text">趣闻</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A3%E5%9E%8B%E5%87%A0%E4%B9%8E%E5%AE%8C%E7%BE%8E%E3%80%81%E8%BF%98%E8%83%BD%E5%8D%A1%E7%82%B9-%E9%9C%89%E9%9C%89%E8%AF%B4%E5%9C%B0%E9%81%93%E4%B8%AD%E6%96%87%E7%9A%84%E8%A7%86%E9%A2%91%E7%81%AB%E4%BA%86-%E8%83%8C%E5%90%8EAI%E5%B7%A5%E5%85%B7%E5%8E%9F%E6%9D%A5%E6%98%AF%E5%AE%83"><span class="toc-number">1.1.</span> <span class="toc-text">口型几乎完美、还能卡点,霉霉说地道中文的视频火了,背后AI工具原来是它</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E6%B5%81%E4%BA%A1%E2%80%9D%E7%9A%84Telegram%E5%88%9B%E5%A7%8B%E4%BA%BA%E5%8F%8A%E5%85%B6%E5%8A%A0%E5%AF%86%E9%87%8E%E5%BF%83"><span class="toc-number">1.2.</span> <span class="toc-text">“流亡”的Telegram创始人及其加密野心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%89%E7%BA%A7%E4%BF%9D%E6%8A%A4%E7%8E%B0%E5%9C%BA%E6%B5%8B%E8%AF%84%E5%B7%A5%E5%85%B7-Golin"><span class="toc-number">1.3.</span> <span class="toc-text">等级保护现场测评工具 - Golin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8EETL%E5%88%B0ELT-%E6%8F%AD%E7%A7%98%E7%81%AB%E5%B1%B1%E5%BC%95%E6%93%8EByteHouse%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.4.</span> <span class="toc-text">从ETL到ELT,揭秘火山引擎ByteHouse的技术实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%AF%AD%E9%9B%80-23-%E6%97%A5%E6%95%85%E9%9A%9C%E7%9A%84%E5%85%AC%E5%91%8A"><span class="toc-number">1.5.</span> <span class="toc-text">关于语雀 23 日故障的公告</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&text=TechnicalDiscovery 2023 #43"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&title=TechnicalDiscovery 2023 #43"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&is_video=false&description=TechnicalDiscovery 2023 #43"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=TechnicalDiscovery 2023 #43&body=Check out this article: https://memo.appcase.cn/2023/10/23/ecdeb1cd.html"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&title=TechnicalDiscovery 2023 #43"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&title=TechnicalDiscovery 2023 #43"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&title=TechnicalDiscovery 2023 #43"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&title=TechnicalDiscovery 2023 #43"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&name=TechnicalDiscovery 2023 #43&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://memo.appcase.cn/2023/10/23/ecdeb1cd.html&t=TechnicalDiscovery 2023 #43"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023-2025
+    YuJian
+    <a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备16027908号-6</a>
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?b5b3300106900148d59ca38007be7201";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'zuoa/zuoa.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

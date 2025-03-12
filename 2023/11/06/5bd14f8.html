@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="baidu-site-verification" content="codeva-JaPTqP5M1v" />
+    <meta name="description" content="趣闻全球最强长文本大模型,一次可读35万汉字:Baichuan2-192K上线五级区划查询与下载 星图地球高德遥感卫星高德卫星和路网高德标准图层  OpenAI首届开发者大会被人提前「掀底牌」,全新ChatGPT原型Gizmo大曝光 很抱歉，我只能回答关于Chatbase的问题。如果您有关于Chatbase的问题或请求，请告诉我。谢谢！  给大模型评分的基准靠谱吗?Anthropic来了次大评估G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TechnicalDiscovery 2023 #45">
+<meta property="og:url" content="https://memo.appcase.cn/2023/11/06/5bd14f8.html">
+<meta property="og:site_name" content="Coder Memo">
+<meta property="og:description" content="趣闻全球最强长文本大模型,一次可读35万汉字:Baichuan2-192K上线五级区划查询与下载 星图地球高德遥感卫星高德卫星和路网高德标准图层  OpenAI首届开发者大会被人提前「掀底牌」,全新ChatGPT原型Gizmo大曝光 很抱歉，我只能回答关于Chatbase的问题。如果您有关于Chatbase的问题或请求，请告诉我。谢谢！  给大模型评分的基准靠谱吗?Anthropic来了次大评估G">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-06T10:57:32.000Z">
+<meta property="article:modified_time" content="2025-03-12T08:01:15.576Z">
+<meta property="article:author" content="YuJian">
+<meta property="article:tag" content="TechnicalDiscovery">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>TechnicalDiscovery 2023 #45</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2023/11/13/9cb44542.html"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/10/31/72ba246e.html"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://memo.appcase.cn/2023/11/06/5bd14f8.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&text=TechnicalDiscovery 2023 #45"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&title=TechnicalDiscovery 2023 #45"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&is_video=false&description=TechnicalDiscovery 2023 #45"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=TechnicalDiscovery 2023 #45&body=Check out this article: https://memo.appcase.cn/2023/11/06/5bd14f8.html"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&title=TechnicalDiscovery 2023 #45"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&title=TechnicalDiscovery 2023 #45"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&title=TechnicalDiscovery 2023 #45"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&title=TechnicalDiscovery 2023 #45"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&name=TechnicalDiscovery 2023 #45&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://memo.appcase.cn/2023/11/06/5bd14f8.html&t=TechnicalDiscovery 2023 #45"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%A3%E9%97%BB"><span class="toc-number">1.</span> <span class="toc-text">趣闻</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E7%90%83%E6%9C%80%E5%BC%BA%E9%95%BF%E6%96%87%E6%9C%AC%E5%A4%A7%E6%A8%A1%E5%9E%8B-%E4%B8%80%E6%AC%A1%E5%8F%AF%E8%AF%BB35%E4%B8%87%E6%B1%89%E5%AD%97-Baichuan2-192K%E4%B8%8A%E7%BA%BF"><span class="toc-number">1.1.</span> <span class="toc-text">全球最强长文本大模型,一次可读35万汉字:Baichuan2-192K上线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E7%BA%A7%E5%8C%BA%E5%88%92%E6%9F%A5%E8%AF%A2%E4%B8%8E%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.2.</span> <span class="toc-text">五级区划查询与下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenAI%E9%A6%96%E5%B1%8A%E5%BC%80%E5%8F%91%E8%80%85%E5%A4%A7%E4%BC%9A%E8%A2%AB%E4%BA%BA%E6%8F%90%E5%89%8D%E3%80%8C%E6%8E%80%E5%BA%95%E7%89%8C%E3%80%8D-%E5%85%A8%E6%96%B0ChatGPT%E5%8E%9F%E5%9E%8BGizmo%E5%A4%A7%E6%9B%9D%E5%85%89"><span class="toc-number">1.3.</span> <span class="toc-text">OpenAI首届开发者大会被人提前「掀底牌」,全新ChatGPT原型Gizmo大曝光</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%99%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AF%84%E5%88%86%E7%9A%84%E5%9F%BA%E5%87%86%E9%9D%A0%E8%B0%B1%E5%90%97-Anthropic%E6%9D%A5%E4%BA%86%E6%AC%A1%E5%A4%A7%E8%AF%84%E4%BC%B0"><span class="toc-number">1.4.</span> <span class="toc-text">给大模型评分的基准靠谱吗?Anthropic来了次大评估</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gartner-2024-%E5%B9%B4%E5%8D%81%E5%A4%A7%E6%88%98%E7%95%A5%E6%8A%80%E6%9C%AF%E8%B6%8B%E5%8A%BF-%E5%8D%8A%E6%95%B0%E4%B8%8E-AI-%E7%9B%B8%E5%85%B3"><span class="toc-number">1.5.</span> <span class="toc-text">Gartner  2024 年十大战略技术趋势,半数与 AI 相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-be-a-Programmer"><span class="toc-number">1.6.</span> <span class="toc-text">How to be a Programmer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%AD%E7%9F%AD-45-%E5%88%86%E9%92%9F%E5%8F%91%E5%B8%83%E4%BC%9A-OpenAI-%E5%A6%82%E4%BD%95%E5%86%8D%E6%AC%A1%E8%AE%A9-AI-%E5%9C%88%E4%B8%80%E5%A4%9C%E6%9C%AA%E7%9C%A0"><span class="toc-number">1.7.</span> <span class="toc-text">短短 45 分钟发布会,OpenAI 如何再次让 AI 圈一夜未眠</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%AA%E7%96%AF%E7%8B%82-GPTs%E4%B8%8A%E7%BA%BF-%E5%A5%A5%E7%89%B9%E6%9B%BC%E8%A1%A8%E6%BC%94%E6%89%8B%E6%90%93%E9%A9%AC%E6%96%AF%E5%85%8B%E5%A4%A7%E6%A8%A1%E5%9E%8B-%E8%BF%98%E6%9C%89%E4%BA%BA%E5%B7%B2%E6%90%9E%E5%87%BA%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B8%82%E5%9C%BA-%E9%99%84%E6%95%99%E7%A8%8B"><span class="toc-number">1.8.</span> <span class="toc-text">太疯狂,GPTs上线:奥特曼表演手搓马斯克大模型,还有人已搞出第三方市场(附教程)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BB%B7%E5%80%BC%E5%AF%B9%E9%BD%90%E6%98%AF%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BF%85%E7%94%B1%E4%B9%8B%E8%B7%AF"><span class="toc-number">1.9.</span> <span class="toc-text">为什么价值对齐是大模型的必由之路?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Runway%E6%96%B0%E5%8A%9F%E8%83%BD%E3%80%8C%E8%BF%90%E5%8A%A8%E7%AC%94%E5%88%B7%E3%80%8D%E5%86%8D%E6%AC%A1%E6%83%8A%E8%89%B3AI%E5%9C%88-%E9%9A%8F%E6%89%8B%E4%B8%80%E6%B6%82-%E5%9B%BE%E7%89%87%E5%B0%B1%E5%8A%A8%E8%B5%B7%E6%9D%A5%E4%BA%86"><span class="toc-number">1.10.</span> <span class="toc-text">Runway新功能「运动笔刷」再次惊艳AI圈:随手一涂,图片就动起来了</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        TechnicalDiscovery 2023 #45
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">YuJian</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-11-06T10:57:32.000Z" class="dt-published" itemprop="datePublished">2023-11-06</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/TechnicalDiscovery/" rel="tag">TechnicalDiscovery</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="趣闻"><a href="#趣闻" class="headerlink" title="趣闻"></a>趣闻</h1><h2 id="全球最强长文本大模型-一次可读35万汉字-Baichuan2-192K上线"><a href="#全球最强长文本大模型-一次可读35万汉字-Baichuan2-192K上线" class="headerlink" title="全球最强长文本大模型,一次可读35万汉字:Baichuan2-192K上线"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/-fBYe86pRYBNzyW5nyA3Dg">全球最强长文本大模型,一次可读35万汉字:Baichuan2-192K上线</a></h2><h2 id="五级区划查询与下载"><a href="#五级区划查询与下载" class="headerlink" title="五级区划查询与下载"></a><a target="_blank" rel="noopener" href="https://map.ruiduobao.com/">五级区划查询与下载</a></h2><blockquote>
+<p>星图地球<br>高德遥感卫星<br>高德卫星和路网<br>高德标准图层</p>
+</blockquote>
+<h2 id="OpenAI首届开发者大会被人提前「掀底牌」-全新ChatGPT原型Gizmo大曝光"><a href="#OpenAI首届开发者大会被人提前「掀底牌」-全新ChatGPT原型Gizmo大曝光" class="headerlink" title="OpenAI首届开发者大会被人提前「掀底牌」,全新ChatGPT原型Gizmo大曝光"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/6dapdV-MdQDSc_A3yWdqBA">OpenAI首届开发者大会被人提前「掀底牌」,全新ChatGPT原型Gizmo大曝光</a></h2><blockquote>
+<p>很抱歉，我只能回答关于Chatbase的问题。如果您有关于Chatbase的问题或请求，请告诉我。谢谢！</p>
+</blockquote>
+<h2 id="给大模型评分的基准靠谱吗-Anthropic来了次大评估"><a href="#给大模型评分的基准靠谱吗-Anthropic来了次大评估" class="headerlink" title="给大模型评分的基准靠谱吗?Anthropic来了次大评估"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vbgt7J8j6OlwP5NHjsn14Q">给大模型评分的基准靠谱吗?Anthropic来了次大评估</a></h2><h2 id="Gartner-2024-年十大战略技术趋势-半数与-AI-相关"><a href="#Gartner-2024-年十大战略技术趋势-半数与-AI-相关" class="headerlink" title="Gartner  2024 年十大战略技术趋势,半数与 AI 相关"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/lYF6Qk3XWJxAv150-Z_3Gg">Gartner  2024 年十大战略技术趋势,半数与 AI 相关</a></h2><blockquote>
+<p>今年的十大战略技术趋势中，AI 相关占了5个席位。AI已经走向应用的阶段，但很多应用场景需要组合性的技术创新。数字化和智能化的步伐从未停歇，员工也要数字化。Gartner预测到2026年，超过80%的企业将在生产环境中使用生成式AI的API模型或部署支持生成式AI的应用程序。生成式AI的全民化将带来新的生产力浪潮。智能应用的本质是在传统应用中加入AI的能力，通过学习、适应和预测提高用户体验和商业价值。到2026年，超过80%的独立软件开发商将嵌入生成式AI的能力。</p>
+</blockquote>
+<h2 id="How-to-be-a-Programmer"><a href="#How-to-be-a-Programmer" class="headerlink" title="How to be a Programmer"></a><a target="_blank" rel="noopener" href="https://braydie.gitbooks.io/how-to-be-a-programmer/content/zh/">How to be a Programmer</a></h2><blockquote>
+<p>如何成为一名程序员：社区版。这本书由Robert L. Read与社区合著，采用知识共享署名-相同方式共享4.0国际许可协议。</p>
+</blockquote>
+<h2 id="短短-45-分钟发布会-OpenAI-如何再次让-AI-圈一夜未眠"><a href="#短短-45-分钟发布会-OpenAI-如何再次让-AI-圈一夜未眠" class="headerlink" title="短短 45 分钟发布会,OpenAI 如何再次让 AI 圈一夜未眠"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/EK9j4pTAkdpNRtQZ_XwQ-w">短短 45 分钟发布会,OpenAI 如何再次让 AI 圈一夜未眠</a></h2><blockquote>
+<p>Assistants API是OpenAI为开发者提供的第一步，用于构建类似代理的应用程序。它使构建代理应用变得更容易，并且OpenAI表示他们将持续提高其能力。未来计划允许客户提供自己的copilot工具，以补充平台上的Code Interpreter、检索组件和函数调用。</p>
+</blockquote>
+<h2 id="太疯狂-GPTs上线-奥特曼表演手搓马斯克大模型-还有人已搞出第三方市场-附教程"><a href="#太疯狂-GPTs上线-奥特曼表演手搓马斯克大模型-还有人已搞出第三方市场-附教程" class="headerlink" title="太疯狂,GPTs上线:奥特曼表演手搓马斯克大模型,还有人已搞出第三方市场(附教程)"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Nw1dKyKhYpsWleVxW-ZgUQ">太疯狂,GPTs上线:奥特曼表演手搓马斯克大模型,还有人已搞出第三方市场(附教程)</a></h2><blockquote>
+<p>OpenAI最近推出了GPTs功能，允许ChatGPT Plus订阅用户自定义GPT应用。用户可以根据不同任务构建专属GPT，如教学、游戏和创意设计。此外，OpenAI计划推出GPT商店，用户可以分享和使用其他用户创建的自定义GPT。已经有第三方GPT商店出现，收集了1000多个用户自定义的GPT。用户可以通过简单的对话创建自己的GPT，并使用它们进行各种任务，如生成图像和编写代码。</p>
+</blockquote>
+<h2 id="为什么价值对齐是大模型的必由之路"><a href="#为什么价值对齐是大模型的必由之路" class="headerlink" title="为什么价值对齐是大模型的必由之路?"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/t8_1nbGOzgB0IT0vO5iIDw">为什么价值对齐是大模型的必由之路?</a></h2><h2 id="Runway新功能「运动笔刷」再次惊艳AI圈-随手一涂-图片就动起来了"><a href="#Runway新功能「运动笔刷」再次惊艳AI圈-随手一涂-图片就动起来了" class="headerlink" title="Runway新功能「运动笔刷」再次惊艳AI圈:随手一涂,图片就动起来了"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/2QA-kvg7TKU5Qj2Wskvnjg">Runway新功能「运动笔刷」再次惊艳AI圈:随手一涂,图片就动起来了</a></h2><blockquote>
+<p>视频生成工具Runway即将推出新功能「motion brush」，可以通过手势控制生成内容的移动。不需要输入文字，只要有手就可以。这个功能可以将选定的图片中的物体动起来，如水流、云彩、火焰等。这是市场上第一个可用的文本到视频模型。用户只需输入文字或图像的描述，gen-2即可生成相关视频。这个功能的出现可能会颠覆视频和电影制作行业。未来可能会有更多类似的技术出现。</p>
+</blockquote>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%A3%E9%97%BB"><span class="toc-number">1.</span> <span class="toc-text">趣闻</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E7%90%83%E6%9C%80%E5%BC%BA%E9%95%BF%E6%96%87%E6%9C%AC%E5%A4%A7%E6%A8%A1%E5%9E%8B-%E4%B8%80%E6%AC%A1%E5%8F%AF%E8%AF%BB35%E4%B8%87%E6%B1%89%E5%AD%97-Baichuan2-192K%E4%B8%8A%E7%BA%BF"><span class="toc-number">1.1.</span> <span class="toc-text">全球最强长文本大模型,一次可读35万汉字:Baichuan2-192K上线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E7%BA%A7%E5%8C%BA%E5%88%92%E6%9F%A5%E8%AF%A2%E4%B8%8E%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.2.</span> <span class="toc-text">五级区划查询与下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenAI%E9%A6%96%E5%B1%8A%E5%BC%80%E5%8F%91%E8%80%85%E5%A4%A7%E4%BC%9A%E8%A2%AB%E4%BA%BA%E6%8F%90%E5%89%8D%E3%80%8C%E6%8E%80%E5%BA%95%E7%89%8C%E3%80%8D-%E5%85%A8%E6%96%B0ChatGPT%E5%8E%9F%E5%9E%8BGizmo%E5%A4%A7%E6%9B%9D%E5%85%89"><span class="toc-number">1.3.</span> <span class="toc-text">OpenAI首届开发者大会被人提前「掀底牌」,全新ChatGPT原型Gizmo大曝光</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%99%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AF%84%E5%88%86%E7%9A%84%E5%9F%BA%E5%87%86%E9%9D%A0%E8%B0%B1%E5%90%97-Anthropic%E6%9D%A5%E4%BA%86%E6%AC%A1%E5%A4%A7%E8%AF%84%E4%BC%B0"><span class="toc-number">1.4.</span> <span class="toc-text">给大模型评分的基准靠谱吗?Anthropic来了次大评估</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gartner-2024-%E5%B9%B4%E5%8D%81%E5%A4%A7%E6%88%98%E7%95%A5%E6%8A%80%E6%9C%AF%E8%B6%8B%E5%8A%BF-%E5%8D%8A%E6%95%B0%E4%B8%8E-AI-%E7%9B%B8%E5%85%B3"><span class="toc-number">1.5.</span> <span class="toc-text">Gartner  2024 年十大战略技术趋势,半数与 AI 相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-be-a-Programmer"><span class="toc-number">1.6.</span> <span class="toc-text">How to be a Programmer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%AD%E7%9F%AD-45-%E5%88%86%E9%92%9F%E5%8F%91%E5%B8%83%E4%BC%9A-OpenAI-%E5%A6%82%E4%BD%95%E5%86%8D%E6%AC%A1%E8%AE%A9-AI-%E5%9C%88%E4%B8%80%E5%A4%9C%E6%9C%AA%E7%9C%A0"><span class="toc-number">1.7.</span> <span class="toc-text">短短 45 分钟发布会,OpenAI 如何再次让 AI 圈一夜未眠</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%AA%E7%96%AF%E7%8B%82-GPTs%E4%B8%8A%E7%BA%BF-%E5%A5%A5%E7%89%B9%E6%9B%BC%E8%A1%A8%E6%BC%94%E6%89%8B%E6%90%93%E9%A9%AC%E6%96%AF%E5%85%8B%E5%A4%A7%E6%A8%A1%E5%9E%8B-%E8%BF%98%E6%9C%89%E4%BA%BA%E5%B7%B2%E6%90%9E%E5%87%BA%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B8%82%E5%9C%BA-%E9%99%84%E6%95%99%E7%A8%8B"><span class="toc-number">1.8.</span> <span class="toc-text">太疯狂,GPTs上线:奥特曼表演手搓马斯克大模型,还有人已搞出第三方市场(附教程)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BB%B7%E5%80%BC%E5%AF%B9%E9%BD%90%E6%98%AF%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BF%85%E7%94%B1%E4%B9%8B%E8%B7%AF"><span class="toc-number">1.9.</span> <span class="toc-text">为什么价值对齐是大模型的必由之路?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Runway%E6%96%B0%E5%8A%9F%E8%83%BD%E3%80%8C%E8%BF%90%E5%8A%A8%E7%AC%94%E5%88%B7%E3%80%8D%E5%86%8D%E6%AC%A1%E6%83%8A%E8%89%B3AI%E5%9C%88-%E9%9A%8F%E6%89%8B%E4%B8%80%E6%B6%82-%E5%9B%BE%E7%89%87%E5%B0%B1%E5%8A%A8%E8%B5%B7%E6%9D%A5%E4%BA%86"><span class="toc-number">1.10.</span> <span class="toc-text">Runway新功能「运动笔刷」再次惊艳AI圈:随手一涂,图片就动起来了</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://memo.appcase.cn/2023/11/06/5bd14f8.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&text=TechnicalDiscovery 2023 #45"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&title=TechnicalDiscovery 2023 #45"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&is_video=false&description=TechnicalDiscovery 2023 #45"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=TechnicalDiscovery 2023 #45&body=Check out this article: https://memo.appcase.cn/2023/11/06/5bd14f8.html"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&title=TechnicalDiscovery 2023 #45"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&title=TechnicalDiscovery 2023 #45"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&title=TechnicalDiscovery 2023 #45"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&title=TechnicalDiscovery 2023 #45"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://memo.appcase.cn/2023/11/06/5bd14f8.html&name=TechnicalDiscovery 2023 #45&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://memo.appcase.cn/2023/11/06/5bd14f8.html&t=TechnicalDiscovery 2023 #45"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023-2025
+    YuJian
+    <a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备16027908号-6</a>
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?b5b3300106900148d59ca38007be7201";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'zuoa/zuoa.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

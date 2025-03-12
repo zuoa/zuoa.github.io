@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="baidu-site-verification" content="codeva-JaPTqP5M1v" />
+    <meta name="description" content="一、预训练 (Pre-training)：从海量数据中汲取知识 预训练是大模型构建的基石。 其核心思想是利用海量的、通常是无标签的数据进行模型初始化，使模型能够掌握通用的语言模式、语义关系和世界知识。 预训练过程通常采用自监督学习的方式，从数据本身挖掘监督信号，例如： 语言模型 (Language Modeling)： 例如，BERT 利用 Masked Language Model (MLM)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从DeepSeek看大模型的技术点">
+<meta property="og:url" content="https://memo.appcase.cn/2025/02/07/5532eb71.html">
+<meta property="og:site_name" content="Coder Memo">
+<meta property="og:description" content="一、预训练 (Pre-training)：从海量数据中汲取知识 预训练是大模型构建的基石。 其核心思想是利用海量的、通常是无标签的数据进行模型初始化，使模型能够掌握通用的语言模式、语义关系和世界知识。 预训练过程通常采用自监督学习的方式，从数据本身挖掘监督信号，例如： 语言模型 (Language Modeling)： 例如，BERT 利用 Masked Language Model (MLM)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-07T09:00:00.000Z">
+<meta property="article:modified_time" content="2025-03-12T08:01:15.578Z">
+<meta property="article:author" content="YuJian">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>从DeepSeek看大模型的技术点</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2025/02/14/e4b95b2.html"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/02/03/794ca524.html"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://memo.appcase.cn/2025/02/07/5532eb71.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&text=从DeepSeek看大模型的技术点"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&title=从DeepSeek看大模型的技术点"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&is_video=false&description=从DeepSeek看大模型的技术点"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从DeepSeek看大模型的技术点&body=Check out this article: https://memo.appcase.cn/2025/02/07/5532eb71.html"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&title=从DeepSeek看大模型的技术点"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&title=从DeepSeek看大模型的技术点"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&title=从DeepSeek看大模型的技术点"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&title=从DeepSeek看大模型的技术点"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&name=从DeepSeek看大模型的技术点&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://memo.appcase.cn/2025/02/07/5532eb71.html&t=从DeepSeek看大模型的技术点"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        从DeepSeek看大模型的技术点
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">YuJian</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-02-07T09:00:00.000Z" class="dt-published" itemprop="datePublished">2025-02-07</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>一、预训练 (Pre-training)：从海量数据中汲取知识</p>
+<p>预训练是大模型构建的基石。 其核心思想是利用海量的、通常是无标签的数据进行模型初始化，使模型能够掌握通用的语言模式、语义关系和世界知识。 预训练过程通常采用自监督学习的方式，从数据本身挖掘监督信号，例如：</p>
+<p>语言模型 (Language Modeling)： 例如，BERT 利用 Masked Language Model (MLM) 任务，随机遮蔽句子中的一部分词语，让模型预测被遮蔽的词语。 GPT 系列则通过预测下一个词语来学习语言的生成能力。</p>
+<p>对比学习 (Contrastive Learning)： 例如，SimCLR 将同一个图像的不同增强版本作为正样本，将其他图像作为负样本，让模型学习区分正负样本，从而学习到图像的有效表示。</p>
+<p>预训练的优势在于减少对标注数据的依赖，提高模型泛化能力，并加速后续训练的收敛速度。</p>
+<p>二、后训练 (Post-training) ：任务适配与能力提升</p>
+<p>预训练的模型虽然具备通用的能力，但往往需要在特定任务上进行进一步的训练，才能发挥出最大的潜力。这个过程被称为后训练或微调。 后训练可以采用监督学习的方式，也可以利用无监督学习的策略。</p>
+<p>原理： 后训练是利用预训练模型作为起点，然后在特定任务的数据集上进行训练，使其适应特定任务的需求。</p>
+<p>方法：</p>
+<ol>
+<li>监督微调 (Supervised Fine-Tuning, SFT):</li>
+</ol>
+<p>原理： 使用特定任务的标注数据集，调整预训练模型的参数，使其适应该任务。 关键在于选择合适的数据集和调整学习率等超参数，并选择合适的损失函数，例如交叉熵损失（用于分类）或均方误差损失（用于回归）。 监督微调是一种典型的监督学习应用。</p>
+<p>应用： 适用于各种任务，例如文本分类、命名实体识别、机器翻译、文本摘要等。</p>
+<p>示例： 使用斯坦福情感树库 (Stanford Sentiment Treebank) 对 BERT 进行微调，以进行情感分析。</p>
+<ol start="2">
+<li>奖励模型 (Reward Modeling, RM):</li>
+</ol>
+<p>原理： 训练能够评估生成文本质量的奖励模型。 通常，人类会根据多个标准（例如，相关性、流畅性、有用性）对不同的生成结果进行排序。 奖励模型学习根据这些排序对文本进行评分。 奖励模型的训练通常使用排序损失函数 (Ranking Loss)。</p>
+<p>作用： 为强化学习提供奖励信号，引导模型生成更符合人类偏好的文本。 是 RLHF 的关键组成部分。</p>
+<p>示例： 训练一个奖励模型来评估对话机器人的回复质量，用于指导后续的对话策略训练。</p>
+<ol start="3">
+<li>领域自适应 (Domain Adaptation):</li>
+</ol>
+<p>原理： 将预训练模型调整到特定领域的数据上，使其更好地适应该领域的语言风格、知识和任务。 可以利用特定领域的无标签数据进行继续预训练（一种自监督学习的应用），也可以结合对抗学习等技术，学习领域不变的特征表示。</p>
+<p>方法： 领域自适应预训练（在特定领域的无标签数据上继续预训练）和对抗学习（学习领域不变的特征表示)。</p>
+<p>应用： 适用于各个领域，例如医学、法律、金融等。</p>
+<p>示例： 使用法律领域的语料库对 BERT 进行预训练，得到 LegalBERT，从而提高其在法律文本理解和推理方面的能力。</p>
+<p>优势：</p>
+<p>任务适配： 使模型能够更好地解决特定任务，提高任务性能。</p>
+<p>知识迁移： 将预训练模型学到的通用知识迁移到特定任务中，提高学习效率。</p>
+<p>能力强化： 在特定任务中进一步训练，可以增强模型在该任务上的表现。</p>
+<p>三、强化学习 (Reinforcement Learning, RL)：通过与环境交互学习最优策略</p>
+<p>强化学习在大模型领域，尤其是在生成式模型（如对话系统、文本生成）中扮演着越来越重要的角色。</p>
+<p>原理： 智能体通过执行动作，从环境中获得反馈（奖励或惩罚），然后根据反馈调整策略，最终目标是最大化长期累积奖励。</p>
+<p>方法：</p>
+<ol>
+<li>基于人类反馈的强化学习 (Reinforcement Learning from Human Feedback, RLHF):</li>
+</ol>
+<p>原理： 使用人类的反馈（例如，偏好排序）来训练奖励模型，然后利用该奖励模型作为强化学习的奖励信号，引导模型生成更符合人类偏好的文本。</p>
+<p>步骤： 数据收集 -&gt; 训练奖励模型 -&gt; 强化学习（使用奖励模型优化生成模型的策略）。</p>
+<p>优势： 能够更好地对齐模型的行为与人类的价值观和偏好。 是 ChatGPT 等模型成功的关键因素之一。</p>
+<ol start="2">
+<li>近端策略优化 (Proximal Policy Optimization, PPO):</li>
+</ol>
+<p>原理： 一种流行的策略梯度强化学习算法，通过限制策略更新的幅度，来保证训练的稳定性。 PPO 是一种 on-policy 的算法，需要使用当前策略收集数据。</p>
+<p>特点： 易于实现，对超参数不敏感，训练效果好。 通常用于 RLHF 的强化学习阶段。</p>
+<p>机制： PPO 引入了 clip 目标函数，限制新策略和旧策略之间的差异，避免策略更新过于激进。 具体而言，PPO 优化的是一个目标函数，该目标函数由两部分组成：一是策略收益的估计，二是策略差异的惩罚项。</p>
+<ol start="3">
+<li>安全对齐 (Safety Alignment):</li>
+</ol>
+<p>原理： 确保大模型的行为符合安全规范和道德准则，避免生成有害、歧视性、误导性或虚假信息。</p>
+<p>方法： 数据过滤、对抗训练、奖励塑造、人工干预。 奖励塑造是关键，需要精心设计奖励函数，奖励模型的安全行为，惩罚有害行为。</p>
+<p>重要性： 随着大模型能力的增强，安全对齐变得越来越重要，直接关系到大模型的社会影响和伦理责任。</p>
+<p>四、关键架构技术：MoE 和 MLA</p>
+<p>MOE (Mixture of Experts):</p>
+<p>原理： 一种模型架构，旨在扩展模型的容量，同时保持计算效率。 MoE 由多个 “专家” 网络和一个 “门控” 网络组成。</p>
+<p>专家网络： 每个专家网络都是一个独立的子模型，例如 Transformer 层，擅长处理不同类型的数据或任务。 专家网络的数量可以非常大，例如几百个甚至几千个。</p>
+<p>门控网络： 门控网络根据输入数据，动态地选择激活哪个或哪些专家网络。 门控网络的输出是一组权重，表示每个专家网络的激活程度。</p>
+<p>计算过程： 输入数据首先经过门控网络，获得每个专家网络的权重。 然后，将输入数据传递给被激活的专家网络，并将每个专家网络的输出加权求和，得到最终的输出。</p>
+<p>优势：</p>
+<p>模型容量扩展： 可以显著扩大模型容量，提高模型的表达能力。</p>
+<p>计算效率： 只有部分专家网络被激活，可以减少计算量。</p>
+<p>稀疏激活： 由于只有部分专家被激活，可以实现模型的稀疏激活，从而提高模型的泛化能力。</p>
+<p>例子: Switch Transformer, GLaM 等。</p>
+<p>MLA (Multi-Head Latent Attention):</p>
+<p>原理: Multi-Head Latent Attention (MLA) 是一种注意力机制的变体，它允许模型同时关注输入的不同方面，并通过引入潜在变量来提高注意力的表达能力。它和标准的多头注意力（Multi-Head Attention, MHA）相似，但增加了潜在变量（latent variable）来辅助注意力机制的学习，从而挖掘更深层次的关系。</p>
+<p>结构:</p>
+<p>多头 (Multi-Head): 将输入分别映射到多个不同的 Query, Key, Value 空间，在不同的空间中计算注意力，最后将结果合并。</p>
+<p>潜在变量 (Latent Variable): 每个注意力头引入一个或多个潜在变量。 这些潜在变量参与注意力权重的计算，可以学习到输入数据中更抽象、更隐含的特征表示。</p>
+<p>计算过程:</p>
+<p>线性变换: 将输入分别经过线性变换得到 Query (Q), Key (K), Value (V)。</p>
+<p>潜在变量生成: 生成潜在变量 Z，可以是通过学习得到，也可以是随机初始化。</p>
+<p>注意力权重计算: 使用 Q, K, Z 计算注意力权重，例如使用 Q 和 K 的点积，并结合 Z 的信息。</p>
+<p>加权求和: 使用注意力权重对 V 进行加权求和，得到最终的输出。</p>
+<p>多头合并: 将多个注意力头的输出合并。</p>
+<p>优势:</p>
+<p>更强的表达能力: 潜在变量可以帮助模型学习到输入数据中更深层次的关系，从而提高注意力的表达能力。</p>
+<p>更好的泛化能力: 通过引入潜在变量，可以减少模型对输入数据的过度拟合，从而提高模型的泛化能力。</p>
+<p>应用: 在图像生成、文本生成等领域，可以提高模型的生成质量和多样性。例如，在生成对抗网络 (GAN) 中，可以使用 MLA 来提高生成器的生成能力。</p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://memo.appcase.cn/2025/02/07/5532eb71.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&text=从DeepSeek看大模型的技术点"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&title=从DeepSeek看大模型的技术点"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&is_video=false&description=从DeepSeek看大模型的技术点"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从DeepSeek看大模型的技术点&body=Check out this article: https://memo.appcase.cn/2025/02/07/5532eb71.html"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&title=从DeepSeek看大模型的技术点"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&title=从DeepSeek看大模型的技术点"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&title=从DeepSeek看大模型的技术点"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&title=从DeepSeek看大模型的技术点"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://memo.appcase.cn/2025/02/07/5532eb71.html&name=从DeepSeek看大模型的技术点&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://memo.appcase.cn/2025/02/07/5532eb71.html&t=从DeepSeek看大模型的技术点"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023-2025
+    YuJian
+    <a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备16027908号-6</a>
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?b5b3300106900148d59ca38007be7201";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'zuoa/zuoa.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="baidu-site-verification" content="codeva-JaPTqP5M1v" />
+    <meta name="description" content="技术ChatGLM-6B大模型微调实战总结Roop:无需训练，一张图片视频换脸    超低延时直播技术的前世今生 RTP使用私有扩展头携带DTS&#x2F;CTS值，实现音画同步和播放控制逻辑精准同步。每一帧RTP数据包通过扩展头携带该帧的DTS值，每一帧的首个RTP包和VPS&#x2F;SPS&#x2F;PPS包通过扩展头携带该帧的CTS值。通过DTS+CTS计算当前帧的时间戳。  又一款国产自">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Technical Discovery 2023 #32">
+<meta property="og:url" content="https://memo.appcase.cn/2023/08/07/3a8f9028.html">
+<meta property="og:site_name" content="Coder Memo">
+<meta property="og:description" content="技术ChatGLM-6B大模型微调实战总结Roop:无需训练，一张图片视频换脸    超低延时直播技术的前世今生 RTP使用私有扩展头携带DTS&#x2F;CTS值，实现音画同步和播放控制逻辑精准同步。每一帧RTP数据包通过扩展头携带该帧的DTS值，每一帧的首个RTP包和VPS&#x2F;SPS&#x2F;PPS包通过扩展头携带该帧的CTS值。通过DTS+CTS计算当前帧的时间戳。  又一款国产自">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/s0md3v/roop/main/.github/preview/target.gif?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/s0md3v/roop/main/.github/preview/output.gif?sanitize=true">
+<meta property="article:published_time" content="2023-08-07T00:00:00.000Z">
+<meta property="article:modified_time" content="2025-03-12T08:01:15.576Z">
+<meta property="article:author" content="YuJian">
+<meta property="article:tag" content="TechnicalDiscovery">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/s0md3v/roop/main/.github/preview/target.gif?sanitize=true">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Technical Discovery 2023 #32</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2023/08/14/a39f270a.html"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/08/03/f1f79895.html"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://memo.appcase.cn/2023/08/07/3a8f9028.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&text=Technical Discovery 2023 #32"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&title=Technical Discovery 2023 #32"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&is_video=false&description=Technical Discovery 2023 #32"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Technical Discovery 2023 #32&body=Check out this article: https://memo.appcase.cn/2023/08/07/3a8f9028.html"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&title=Technical Discovery 2023 #32"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&title=Technical Discovery 2023 #32"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&title=Technical Discovery 2023 #32"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&title=Technical Discovery 2023 #32"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&name=Technical Discovery 2023 #32&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://memo.appcase.cn/2023/08/07/3a8f9028.html&t=Technical Discovery 2023 #32"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF"><span class="toc-number">1.</span> <span class="toc-text">技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ChatGLM-6B%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83%E5%AE%9E%E6%88%98%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.</span> <span class="toc-text">ChatGLM-6B大模型微调实战总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Roop-%E6%97%A0%E9%9C%80%E8%AE%AD%E7%BB%83%EF%BC%8C%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91%E6%8D%A2%E8%84%B8"><span class="toc-number">1.2.</span> <span class="toc-text">Roop:无需训练，一张图片视频换脸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%85%E4%BD%8E%E5%BB%B6%E6%97%B6%E7%9B%B4%E6%92%AD%E6%8A%80%E6%9C%AF%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F"><span class="toc-number">1.3.</span> <span class="toc-text">超低延时直播技术的前世今生</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%88%E4%B8%80%E6%AC%BE%E5%9B%BD%E4%BA%A7%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0-%E5%BC%80%E6%BA%90%E4%BA%86"><span class="toc-number">1.4.</span> <span class="toc-text">又一款国产自动化测试平台,开源了!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ChatGLM%E5%AE%9E%E6%88%98-%E5%9F%BA%E4%BA%8ELangChain%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A7%81%E6%9C%89%E7%9F%A5%E8%AF%86%E5%BA%93"><span class="toc-number">1.5.</span> <span class="toc-text">ChatGLM实战:基于LangChain构建自己的私有知识库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Is-ChatGPT-Doing-%E2%80%A6-and-Why-Does-It-Work"><span class="toc-number">1.6.</span> <span class="toc-text">What Is ChatGPT Doing … and Why Does It Work?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8D%87ChatGPT%E6%80%A7%E8%83%BD%E7%9A%84%E5%AE%9E%E7%94%A8%E6%8C%87%E5%8D%97-Prompt-Engineering%E7%9A%84%E8%89%BA%E6%9C%AF"><span class="toc-number">1.7.</span> <span class="toc-text">提升ChatGPT性能的实用指南:Prompt Engineering的艺术</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#InvokeAI%EF%BC%9A-Stable-Diffusion-%E5%BC%80%E7%AE%B1%E5%8D%B3%E7%94%A8%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-number">2.1.</span> <span class="toc-text">InvokeAI： Stable Diffusion 开箱即用的版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ProShots-%E7%94%A8AI%E5%88%9B%E5%BB%BA%E4%B8%93%E4%B8%9A%E7%9A%84%E5%A4%B4%E5%83%8F"><span class="toc-number">2.2.</span> <span class="toc-text">ProShots: 用AI创建专业的头像</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%A3%E9%97%BB"><span class="toc-number">3.</span> <span class="toc-text">趣闻</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E7%94%BB%E5%87%BA%E4%B8%80%E5%B9%85%E6%BC%82%E4%BA%AE%E7%9A%84%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="toc-number">3.1.</span> <span class="toc-text">值得收藏!如何快速画出一幅漂亮的架构图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E9%80%9F%E4%B8%AD%E4%BA%A7-%E2%80%9C%E8%BF%94%E8%B4%AB%E2%80%9D-%E7%9A%844%E4%B8%AA%E8%BF%B9%E8%B1%A1"><span class="toc-number">3.2.</span> <span class="toc-text">加速中产 “返贫” 的4个迹象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Good-code-is-like-a-love-letter-to-the-next-developer-who-will-maintain-it"><span class="toc-number">3.3.</span> <span class="toc-text">Good code is like a love letter to the next developer who will maintain it.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ASF-Generative-Tooling-Guidance"><span class="toc-number">3.4.</span> <span class="toc-text">ASF Generative Tooling Guidance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Little-Big-World"><span class="toc-number">3.5.</span> <span class="toc-text">Little Big World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B0%B8%E4%B9%90%E5%A4%A7%E5%85%B8"><span class="toc-number">3.6.</span> <span class="toc-text">永乐大典</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%B0%98%E6%97%A7%E5%BD%B1"><span class="toc-number">3.7.</span> <span class="toc-text">前尘旧影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%AD%A6%E8%80%85Java%E5%BA%94%E8%AF%A5%E5%AD%A6jdk%E4%BB%80%E4%B9%88%E7%89%88%E6%9C%AC%EF%BC%9F"><span class="toc-number">3.8.</span> <span class="toc-text">初学者Java应该学jdk什么版本？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8ELinux-%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86"><span class="toc-number">3.9.</span> <span class="toc-text">关于Linux 网络抓包的一些笔记整理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E7%A7%91%E5%AD%A6%E8%8C%83%E5%BC%8F%E8%BD%AC%E7%A7%BB"><span class="toc-number">3.10.</span> <span class="toc-text">第三次科学范式转移?</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Technical Discovery 2023 #32
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">YuJian</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-08-07T00:00:00.000Z" class="dt-published" itemprop="datePublished">2023-08-07</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/TechnicalDiscovery/" rel="tag">TechnicalDiscovery</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h1><h2 id="ChatGLM-6B大模型微调实战总结"><a href="#ChatGLM-6B大模型微调实战总结" class="headerlink" title="ChatGLM-6B大模型微调实战总结"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/kssEH598VJMkSj7LyM3v0g">ChatGLM-6B大模型微调实战总结</a></h2><h2 id="Roop-无需训练，一张图片视频换脸"><a href="#Roop-无需训练，一张图片视频换脸" class="headerlink" title="Roop:无需训练，一张图片视频换脸"></a><a target="_blank" rel="noopener" href="https://github.com/s0md3v/roop">Roop:无需训练，一张图片视频换脸</a></h2><blockquote>
+<div style="display:inline-block;"><img style="float: left; margin-right: 10px;" src="https://raw.githubusercontent.com/s0md3v/roop/main/.github/preview/target.gif?sanitize=true" width="40%" height="50%" /> <img style="float: left; margin-right: 10px;" src="https://raw.githubusercontent.com/s0md3v/roop/main/.github/preview/output.gif?sanitize=true" width="40%" height="50%" /></div>
+</blockquote>
+<h2 id="超低延时直播技术的前世今生"><a href="#超低延时直播技术的前世今生" class="headerlink" title="超低延时直播技术的前世今生"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/twNl9XvbLMEyEcBL0FQUuA">超低延时直播技术的前世今生</a></h2><blockquote>
+<p>RTP使用私有扩展头携带DTS&#x2F;CTS值，实现音画同步和播放控制逻辑精准同步。每一帧RTP数据包通过扩展头携带该帧的DTS值，每一帧的首个RTP包和VPS&#x2F;SPS&#x2F;PPS包通过扩展头携带该帧的CTS值。通过DTS+CTS计算当前帧的时间戳。</p>
+</blockquote>
+<h2 id="又一款国产自动化测试平台-开源了"><a href="#又一款国产自动化测试平台-开源了" class="headerlink" title="又一款国产自动化测试平台,开源了!"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/gziIAGa-fzfN7Ao69KO00g">又一款国产自动化测试平台,开源了!</a></h2><h2 id="ChatGLM实战-基于LangChain构建自己的私有知识库"><a href="#ChatGLM实战-基于LangChain构建自己的私有知识库" class="headerlink" title="ChatGLM实战:基于LangChain构建自己的私有知识库"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/oDRkmOwIbAiPoCFuMpf3BQ">ChatGLM实战:基于LangChain构建自己的私有知识库</a></h2><blockquote>
+<p>本文介绍了使用LangChain构建基于本地知识库的问答功能的方法。作者提到在之前的实验中由于数据量小，调试效果不佳。然而，在社区中了解到了LangChain可以通过导入本地文件来建立本地知识库，并实现问答功能。作者立刻行动起来，利用GPU云服务器进行搭建。LangChain是一个用于构建基于大型语言模型的应用程序的库，并可以将大型语言模型与其他知识源结合，应用的领域广泛。作者还提供了下载源码和环境准备的步骤。</p>
+</blockquote>
+<h2 id="What-Is-ChatGPT-Doing-…-and-Why-Does-It-Work"><a href="#What-Is-ChatGPT-Doing-…-and-Why-Does-It-Work" class="headerlink" title="What Is ChatGPT Doing … and Why Does It Work?"></a><a target="_blank" rel="noopener" href="https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/">What Is ChatGPT Doing … and Why Does It Work?</a></h2><blockquote>
+<p>ChatGPT是一个可以自动生成类似人类写作的文本的机器人，它是如何实现的？为什么能够做得这么好？本文将从整体上解释ChatGPT内部的工作原理，探讨它为何能够产生有意义的文本。首先要解释的是，ChatGPT的基本目标始终是产生当前文本的“合理延续”，不管它有多少内容。</p>
+</blockquote>
+<h2 id="提升ChatGPT性能的实用指南-Prompt-Engineering的艺术"><a href="#提升ChatGPT性能的实用指南-Prompt-Engineering的艺术" class="headerlink" title="提升ChatGPT性能的实用指南:Prompt Engineering的艺术"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/GKCwpbY39dNdxhUYfmN6Ew#111">提升ChatGPT性能的实用指南:Prompt Engineering的艺术</a></h2><blockquote>
+<p>提示工程是为大语言模型设计的一种”语言游戏”，通过引导和指示大语言模型处理问题，提高其处理复杂问题的能力和扩展性。一个提示通常包含指令、上下文、输入数据和输出格式等元素。设计有效的提示需要明确的命令和细节，可以从简单的提示逐步添加元素和上下文，以优化结果。提示工程为理解和应用大语言模型提供了新的途径。</p>
+</blockquote>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="InvokeAI：-Stable-Diffusion-开箱即用的版本"><a href="#InvokeAI：-Stable-Diffusion-开箱即用的版本" class="headerlink" title="InvokeAI： Stable Diffusion 开箱即用的版本"></a><a target="_blank" rel="noopener" href="https://github.com/invoke-ai/InvokeAI">InvokeAI： Stable Diffusion 开箱即用的版本</a></h2><h2 id="ProShots-用AI创建专业的头像"><a href="#ProShots-用AI创建专业的头像" class="headerlink" title="ProShots: 用AI创建专业的头像"></a><a target="_blank" rel="noopener" href="https://proshots.app/">ProShots: 用AI创建专业的头像</a></h2><h1 id="趣闻"><a href="#趣闻" class="headerlink" title="趣闻"></a>趣闻</h1><h2 id="值得收藏-如何快速画出一幅漂亮的架构图"><a href="#值得收藏-如何快速画出一幅漂亮的架构图" class="headerlink" title="值得收藏!如何快速画出一幅漂亮的架构图"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/RP1sb9xfg_d0SuUK5c6ucw">值得收藏!如何快速画出一幅漂亮的架构图</a></h2><h2 id="加速中产-“返贫”-的4个迹象"><a href="#加速中产-“返贫”-的4个迹象" class="headerlink" title="加速中产 “返贫” 的4个迹象"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vtaDdvZwBdC4WO8PNGs9rQ">加速中产 “返贫” 的4个迹象</a></h2><h2 id="Good-code-is-like-a-love-letter-to-the-next-developer-who-will-maintain-it"><a href="#Good-code-is-like-a-love-letter-to-the-next-developer-who-will-maintain-it" class="headerlink" title="Good code is like a love letter to the next developer who will maintain it."></a><a target="_blank" rel="noopener" href="https://addyosmani.com/blog/good-code/">Good code is like a love letter to the next developer who will maintain it.</a></h2><blockquote>
+<p>编程的本质是沟通，好的代码就像给下一个开发者写的情书，个人、真诚、注重细节。设计模式和原则能让代码可扩展、可维护、高效，并提供共享词汇，使软件设计更易读懂。好的代码还遵循最佳实践，包括命名规范、模块化和注释。测试和测试驱动开发能保证代码的质量，体现出开发者的专业态度。最重要的是，好的代码表达对读者的关怀和尊重，是对下一个开发者的敬意。好的代码是我们给后来者留下的持久遗产，而不仅仅是情书。</p>
+</blockquote>
+<h2 id="ASF-Generative-Tooling-Guidance"><a href="#ASF-Generative-Tooling-Guidance" class="headerlink" title="ASF Generative Tooling Guidance"></a><a target="_blank" rel="noopener" href="https://www.apache.org/legal/generative-tooling.html#handling-references">ASF Generative Tooling Guidance</a></h2><blockquote>
+<p>ASF生成工具指南</p>
+</blockquote>
+<h2 id="Little-Big-World"><a href="#Little-Big-World" class="headerlink" title="Little Big World"></a><a target="_blank" rel="noopener" href="https://www.littlebigworld.de/">Little Big World</a></h2><blockquote>
+<p>以微观模型去看地球上各个地方。</p>
+</blockquote>
+<h2 id="永乐大典"><a href="#永乐大典" class="headerlink" title="永乐大典"></a><a target="_blank" rel="noopener" href="https://yongle.shidianguji.com/">永乐大典</a></h2><blockquote>
+<p>线上的永乐大典。<br>《永乐大典》成书于明永乐六年（1408），是中国古代最大的类书，《不列颠百科全书》称其为“世界有史以来最大的百科全书”，共计22937卷（含目录与凡例60卷）11095册，约3.7亿字，收先秦至明初的各类典籍七八千种，被称为典籍渊薮、佚书宝库。</p>
+</blockquote>
+<h2 id="前尘旧影"><a href="#前尘旧影" class="headerlink" title="前尘旧影"></a><a target="_blank" rel="noopener" href="http://read.nlc.cn/allSearch/searchList?searchType=36&showType=1&pageNo=1">前尘旧影</a></h2><blockquote>
+<p>该资源库收录了国家图书馆收藏的新旧照片3074组，真实生动地记录了过去的社会事件、历史人物、城乡面貌、名胜古迹和建筑服饰等，人们可从中解读出不同历史时期特定事物的形象特征和真实信息，具有十分重要的历史价值。</p>
+</blockquote>
+<h2 id="初学者Java应该学jdk什么版本？"><a href="#初学者Java应该学jdk什么版本？" class="headerlink" title="初学者Java应该学jdk什么版本？"></a><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/609257984/answer/3105678516">初学者Java应该学jdk什么版本？</a></h2><blockquote>
+<p>是否还在用着JDK8</p>
+</blockquote>
+<h2 id="关于Linux-网络抓包的一些笔记整理"><a href="#关于Linux-网络抓包的一些笔记整理" class="headerlink" title="关于Linux 网络抓包的一些笔记整理"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/el8Fkr8rpKrKOUpISY459w">关于Linux 网络抓包的一些笔记整理</a></h2><h2 id="第三次科学范式转移"><a href="#第三次科学范式转移" class="headerlink" title="第三次科学范式转移?"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/G78z8kWwthm--rybGinvVg">第三次科学范式转移?</a></h2><blockquote>
+<p>科学正面临第三次范式转移，从牛顿的经典物理学和量子物理学转向演化的生物圈。生物圈是宇宙中最复杂的系统，无法用数学推导预测其演化过程。演化是一个自我构建的涌现过程，而不是工程。生物圈中的适应性演化超越了牛顿范式，无法用微分方程和相空间来描述。科学面临超越牛顿物理学的转变。演化的生物圈展现了创造力的涌现。本文希望阐明这一转变的证据和必要性。</p>
+</blockquote>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF"><span class="toc-number">1.</span> <span class="toc-text">技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ChatGLM-6B%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83%E5%AE%9E%E6%88%98%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.</span> <span class="toc-text">ChatGLM-6B大模型微调实战总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Roop-%E6%97%A0%E9%9C%80%E8%AE%AD%E7%BB%83%EF%BC%8C%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91%E6%8D%A2%E8%84%B8"><span class="toc-number">1.2.</span> <span class="toc-text">Roop:无需训练，一张图片视频换脸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%85%E4%BD%8E%E5%BB%B6%E6%97%B6%E7%9B%B4%E6%92%AD%E6%8A%80%E6%9C%AF%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F"><span class="toc-number">1.3.</span> <span class="toc-text">超低延时直播技术的前世今生</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%88%E4%B8%80%E6%AC%BE%E5%9B%BD%E4%BA%A7%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0-%E5%BC%80%E6%BA%90%E4%BA%86"><span class="toc-number">1.4.</span> <span class="toc-text">又一款国产自动化测试平台,开源了!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ChatGLM%E5%AE%9E%E6%88%98-%E5%9F%BA%E4%BA%8ELangChain%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A7%81%E6%9C%89%E7%9F%A5%E8%AF%86%E5%BA%93"><span class="toc-number">1.5.</span> <span class="toc-text">ChatGLM实战:基于LangChain构建自己的私有知识库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Is-ChatGPT-Doing-%E2%80%A6-and-Why-Does-It-Work"><span class="toc-number">1.6.</span> <span class="toc-text">What Is ChatGPT Doing … and Why Does It Work?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8D%87ChatGPT%E6%80%A7%E8%83%BD%E7%9A%84%E5%AE%9E%E7%94%A8%E6%8C%87%E5%8D%97-Prompt-Engineering%E7%9A%84%E8%89%BA%E6%9C%AF"><span class="toc-number">1.7.</span> <span class="toc-text">提升ChatGPT性能的实用指南:Prompt Engineering的艺术</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#InvokeAI%EF%BC%9A-Stable-Diffusion-%E5%BC%80%E7%AE%B1%E5%8D%B3%E7%94%A8%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-number">2.1.</span> <span class="toc-text">InvokeAI： Stable Diffusion 开箱即用的版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ProShots-%E7%94%A8AI%E5%88%9B%E5%BB%BA%E4%B8%93%E4%B8%9A%E7%9A%84%E5%A4%B4%E5%83%8F"><span class="toc-number">2.2.</span> <span class="toc-text">ProShots: 用AI创建专业的头像</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%A3%E9%97%BB"><span class="toc-number">3.</span> <span class="toc-text">趣闻</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E7%94%BB%E5%87%BA%E4%B8%80%E5%B9%85%E6%BC%82%E4%BA%AE%E7%9A%84%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="toc-number">3.1.</span> <span class="toc-text">值得收藏!如何快速画出一幅漂亮的架构图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E9%80%9F%E4%B8%AD%E4%BA%A7-%E2%80%9C%E8%BF%94%E8%B4%AB%E2%80%9D-%E7%9A%844%E4%B8%AA%E8%BF%B9%E8%B1%A1"><span class="toc-number">3.2.</span> <span class="toc-text">加速中产 “返贫” 的4个迹象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Good-code-is-like-a-love-letter-to-the-next-developer-who-will-maintain-it"><span class="toc-number">3.3.</span> <span class="toc-text">Good code is like a love letter to the next developer who will maintain it.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ASF-Generative-Tooling-Guidance"><span class="toc-number">3.4.</span> <span class="toc-text">ASF Generative Tooling Guidance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Little-Big-World"><span class="toc-number">3.5.</span> <span class="toc-text">Little Big World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B0%B8%E4%B9%90%E5%A4%A7%E5%85%B8"><span class="toc-number">3.6.</span> <span class="toc-text">永乐大典</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%B0%98%E6%97%A7%E5%BD%B1"><span class="toc-number">3.7.</span> <span class="toc-text">前尘旧影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%AD%A6%E8%80%85Java%E5%BA%94%E8%AF%A5%E5%AD%A6jdk%E4%BB%80%E4%B9%88%E7%89%88%E6%9C%AC%EF%BC%9F"><span class="toc-number">3.8.</span> <span class="toc-text">初学者Java应该学jdk什么版本？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8ELinux-%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86"><span class="toc-number">3.9.</span> <span class="toc-text">关于Linux 网络抓包的一些笔记整理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E7%A7%91%E5%AD%A6%E8%8C%83%E5%BC%8F%E8%BD%AC%E7%A7%BB"><span class="toc-number">3.10.</span> <span class="toc-text">第三次科学范式转移?</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://memo.appcase.cn/2023/08/07/3a8f9028.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&text=Technical Discovery 2023 #32"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&title=Technical Discovery 2023 #32"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&is_video=false&description=Technical Discovery 2023 #32"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Technical Discovery 2023 #32&body=Check out this article: https://memo.appcase.cn/2023/08/07/3a8f9028.html"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&title=Technical Discovery 2023 #32"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&title=Technical Discovery 2023 #32"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&title=Technical Discovery 2023 #32"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&title=Technical Discovery 2023 #32"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://memo.appcase.cn/2023/08/07/3a8f9028.html&name=Technical Discovery 2023 #32&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://memo.appcase.cn/2023/08/07/3a8f9028.html&t=Technical Discovery 2023 #32"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023-2025
+    YuJian
+    <a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备16027908号-6</a>
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?b5b3300106900148d59ca38007be7201";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'zuoa/zuoa.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

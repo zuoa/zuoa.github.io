@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="baidu-site-verification" content="codeva-JaPTqP5M1v" />
+    <meta name="description" content="趣闻写了个自动批改小孩作业的代码 文章提取：介绍了一种新型的智能手机，具有高性能处理器和大容量电池，支持5G网络。同时还提到了该手机的摄像头配置和屏幕显示效果。  Claude 官方提示词,中文版(含API Prompt)月之暗面武士-Kimi使用技巧和超强prompt第三期啦加速分化:关于大模型走势的十个判断DIY一个自己专属的智能天气显示屏:ESP32-Weather-EPD大模型和向量数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TechnicalDiscovery 2024 #11">
+<meta property="og:url" content="https://memo.appcase.cn/2024/03/11/cd87f8b4.html">
+<meta property="og:site_name" content="Coder Memo">
+<meta property="og:description" content="趣闻写了个自动批改小孩作业的代码 文章提取：介绍了一种新型的智能手机，具有高性能处理器和大容量电池，支持5G网络。同时还提到了该手机的摄像头配置和屏幕显示效果。  Claude 官方提示词,中文版(含API Prompt)月之暗面武士-Kimi使用技巧和超强prompt第三期啦加速分化:关于大模型走势的十个判断DIY一个自己专属的智能天气显示屏:ESP32-Weather-EPD大模型和向量数据库">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-11T14:19:10.000Z">
+<meta property="article:modified_time" content="2025-03-12T08:01:15.576Z">
+<meta property="article:author" content="YuJian">
+<meta property="article:tag" content="TechnicalDiscovery">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>TechnicalDiscovery 2024 #11</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2024/03/18/548ea90e.html"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/03/04/ba80c822.html"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://memo.appcase.cn/2024/03/11/cd87f8b4.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&text=TechnicalDiscovery 2024 #11"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&title=TechnicalDiscovery 2024 #11"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&is_video=false&description=TechnicalDiscovery 2024 #11"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=TechnicalDiscovery 2024 #11&body=Check out this article: https://memo.appcase.cn/2024/03/11/cd87f8b4.html"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&title=TechnicalDiscovery 2024 #11"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&title=TechnicalDiscovery 2024 #11"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&title=TechnicalDiscovery 2024 #11"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&title=TechnicalDiscovery 2024 #11"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&name=TechnicalDiscovery 2024 #11&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&t=TechnicalDiscovery 2024 #11"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%A3%E9%97%BB"><span class="toc-number">1.</span> <span class="toc-text">趣闻</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E4%BA%86%E4%B8%AA%E8%87%AA%E5%8A%A8%E6%89%B9%E6%94%B9%E5%B0%8F%E5%AD%A9%E4%BD%9C%E4%B8%9A%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.</span> <span class="toc-text">写了个自动批改小孩作业的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Claude-%E5%AE%98%E6%96%B9%E6%8F%90%E7%A4%BA%E8%AF%8D-%E4%B8%AD%E6%96%87%E7%89%88-%E5%90%ABAPI-Prompt"><span class="toc-number">1.2.</span> <span class="toc-text">Claude 官方提示词,中文版(含API Prompt)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%88%E4%B9%8B%E6%9A%97%E9%9D%A2%E6%AD%A6%E5%A3%AB-Kimi%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E5%92%8C%E8%B6%85%E5%BC%BAprompt%E7%AC%AC%E4%B8%89%E6%9C%9F%E5%95%A6"><span class="toc-number">1.3.</span> <span class="toc-text">月之暗面武士-Kimi使用技巧和超强prompt第三期啦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E9%80%9F%E5%88%86%E5%8C%96-%E5%85%B3%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%B5%B0%E5%8A%BF%E7%9A%84%E5%8D%81%E4%B8%AA%E5%88%A4%E6%96%AD"><span class="toc-number">1.4.</span> <span class="toc-text">加速分化:关于大模型走势的十个判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DIY%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E4%B8%93%E5%B1%9E%E7%9A%84%E6%99%BA%E8%83%BD%E5%A4%A9%E6%B0%94%E6%98%BE%E7%A4%BA%E5%B1%8F-ESP32-Weather-EPD"><span class="toc-number">1.5.</span> <span class="toc-text">DIY一个自己专属的智能天气显示屏:ESP32-Weather-EPD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%8E%E4%B9%88%E6%90%AD%E5%BB%BA-RAG-%E7%B3%BB%E7%BB%9F-Step-by-step-%E4%BE%8B%E5%AD%90%E6%9D%A5%E4%BA%86%E3%80%82"><span class="toc-number">1.6.</span> <span class="toc-text">大模型和向量数据库怎么搭建 RAG 系统?Step by step 例子来了。</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        TechnicalDiscovery 2024 #11
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">YuJian</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-03-11T14:19:10.000Z" class="dt-published" itemprop="datePublished">2024-03-11</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/TechnicalDiscovery/" rel="tag">TechnicalDiscovery</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="趣闻"><a href="#趣闻" class="headerlink" title="趣闻"></a>趣闻</h1><h2 id="写了个自动批改小孩作业的代码"><a href="#写了个自动批改小孩作业的代码" class="headerlink" title="写了个自动批改小孩作业的代码"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/v0q84pPT5AEaFM4GVuvuwg">写了个自动批改小孩作业的代码</a></h2><blockquote>
+<p>文章提取：介绍了一种新型的智能手机，具有高性能处理器和大容量电池，支持5G网络。同时还提到了该手机的摄像头配置和屏幕显示效果。</p>
+</blockquote>
+<h2 id="Claude-官方提示词-中文版-含API-Prompt"><a href="#Claude-官方提示词-中文版-含API-Prompt" class="headerlink" title="Claude 官方提示词,中文版(含API Prompt)"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rdKcT76ayfV-H9wkfLVaJQ">Claude 官方提示词,中文版(含API Prompt)</a></h2><h2 id="月之暗面武士-Kimi使用技巧和超强prompt第三期啦"><a href="#月之暗面武士-Kimi使用技巧和超强prompt第三期啦" class="headerlink" title="月之暗面武士-Kimi使用技巧和超强prompt第三期啦"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/bFw84uECJX5dMSuI2Sq5rg">月之暗面武士-Kimi使用技巧和超强prompt第三期啦</a></h2><h2 id="加速分化-关于大模型走势的十个判断"><a href="#加速分化-关于大模型走势的十个判断" class="headerlink" title="加速分化:关于大模型走势的十个判断"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/b_iTN_UGBIcufBIcsrJnow">加速分化:关于大模型走势的十个判断</a></h2><h2 id="DIY一个自己专属的智能天气显示屏-ESP32-Weather-EPD"><a href="#DIY一个自己专属的智能天气显示屏-ESP32-Weather-EPD" class="headerlink" title="DIY一个自己专属的智能天气显示屏:ESP32-Weather-EPD"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/htJL5WOngrtHORRQVM56kw">DIY一个自己专属的智能天气显示屏:ESP32-Weather-EPD</a></h2><h2 id="大模型和向量数据库怎么搭建-RAG-系统-Step-by-step-例子来了。"><a href="#大模型和向量数据库怎么搭建-RAG-系统-Step-by-step-例子来了。" class="headerlink" title="大模型和向量数据库怎么搭建 RAG 系统?Step by step 例子来了。"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/SGvwIzjI1YaiZyI2V7AurA">大模型和向量数据库怎么搭建 RAG 系统?Step by step 例子来了。</a></h2>
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%A3%E9%97%BB"><span class="toc-number">1.</span> <span class="toc-text">趣闻</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E4%BA%86%E4%B8%AA%E8%87%AA%E5%8A%A8%E6%89%B9%E6%94%B9%E5%B0%8F%E5%AD%A9%E4%BD%9C%E4%B8%9A%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.</span> <span class="toc-text">写了个自动批改小孩作业的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Claude-%E5%AE%98%E6%96%B9%E6%8F%90%E7%A4%BA%E8%AF%8D-%E4%B8%AD%E6%96%87%E7%89%88-%E5%90%ABAPI-Prompt"><span class="toc-number">1.2.</span> <span class="toc-text">Claude 官方提示词,中文版(含API Prompt)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%88%E4%B9%8B%E6%9A%97%E9%9D%A2%E6%AD%A6%E5%A3%AB-Kimi%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E5%92%8C%E8%B6%85%E5%BC%BAprompt%E7%AC%AC%E4%B8%89%E6%9C%9F%E5%95%A6"><span class="toc-number">1.3.</span> <span class="toc-text">月之暗面武士-Kimi使用技巧和超强prompt第三期啦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E9%80%9F%E5%88%86%E5%8C%96-%E5%85%B3%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%B5%B0%E5%8A%BF%E7%9A%84%E5%8D%81%E4%B8%AA%E5%88%A4%E6%96%AD"><span class="toc-number">1.4.</span> <span class="toc-text">加速分化:关于大模型走势的十个判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DIY%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E4%B8%93%E5%B1%9E%E7%9A%84%E6%99%BA%E8%83%BD%E5%A4%A9%E6%B0%94%E6%98%BE%E7%A4%BA%E5%B1%8F-ESP32-Weather-EPD"><span class="toc-number">1.5.</span> <span class="toc-text">DIY一个自己专属的智能天气显示屏:ESP32-Weather-EPD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%8E%E4%B9%88%E6%90%AD%E5%BB%BA-RAG-%E7%B3%BB%E7%BB%9F-Step-by-step-%E4%BE%8B%E5%AD%90%E6%9D%A5%E4%BA%86%E3%80%82"><span class="toc-number">1.6.</span> <span class="toc-text">大模型和向量数据库怎么搭建 RAG 系统?Step by step 例子来了。</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://memo.appcase.cn/2024/03/11/cd87f8b4.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&text=TechnicalDiscovery 2024 #11"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&title=TechnicalDiscovery 2024 #11"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&is_video=false&description=TechnicalDiscovery 2024 #11"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=TechnicalDiscovery 2024 #11&body=Check out this article: https://memo.appcase.cn/2024/03/11/cd87f8b4.html"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&title=TechnicalDiscovery 2024 #11"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&title=TechnicalDiscovery 2024 #11"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&title=TechnicalDiscovery 2024 #11"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&title=TechnicalDiscovery 2024 #11"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&name=TechnicalDiscovery 2024 #11&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://memo.appcase.cn/2024/03/11/cd87f8b4.html&t=TechnicalDiscovery 2024 #11"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023-2025
+    YuJian
+    <a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备16027908号-6</a>
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?b5b3300106900148d59ca38007be7201";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'zuoa/zuoa.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

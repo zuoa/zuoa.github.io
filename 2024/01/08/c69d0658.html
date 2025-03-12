@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="baidu-site-verification" content="codeva-JaPTqP5M1v" />
+    <meta name="description" content="趣闻SwiftInfer 重磅开源,让 AI 聊天更加丝滑! SwiftInfer是基于TensorRT实现的StreamingLLM，可以进一步提升大模型推理性能46%。它解决了多轮对话推理中的问题，通过观察注意力模块中Softmax的输出，发现了attention sink的现象，并通过基于attention sink的注意力机制提高了生成效果。SwiftInfer与TensorRT结合，继承">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TechnicalDiscovery 2024 #2">
+<meta property="og:url" content="https://memo.appcase.cn/2024/01/08/c69d0658.html">
+<meta property="og:site_name" content="Coder Memo">
+<meta property="og:description" content="趣闻SwiftInfer 重磅开源,让 AI 聊天更加丝滑! SwiftInfer是基于TensorRT实现的StreamingLLM，可以进一步提升大模型推理性能46%。它解决了多轮对话推理中的问题，通过观察注意力模块中Softmax的输出，发现了attention sink的现象，并通过基于attention sink的注意力机制提高了生成效果。SwiftInfer与TensorRT结合，继承">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-08T14:06:11.000Z">
+<meta property="article:modified_time" content="2025-03-12T08:01:15.577Z">
+<meta property="article:author" content="YuJian">
+<meta property="article:tag" content="TechnicalDiscovery">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>TechnicalDiscovery 2024 #2</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2024/01/19/b19a36ce.html"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/01/02/5f9457e2.html"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://memo.appcase.cn/2024/01/08/c69d0658.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&text=TechnicalDiscovery 2024 #2"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&title=TechnicalDiscovery 2024 #2"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&is_video=false&description=TechnicalDiscovery 2024 #2"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=TechnicalDiscovery 2024 #2&body=Check out this article: https://memo.appcase.cn/2024/01/08/c69d0658.html"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&title=TechnicalDiscovery 2024 #2"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&title=TechnicalDiscovery 2024 #2"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&title=TechnicalDiscovery 2024 #2"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&title=TechnicalDiscovery 2024 #2"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&name=TechnicalDiscovery 2024 #2&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://memo.appcase.cn/2024/01/08/c69d0658.html&t=TechnicalDiscovery 2024 #2"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%A3%E9%97%BB"><span class="toc-number">1.</span> <span class="toc-text">趣闻</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SwiftInfer-%E9%87%8D%E7%A3%85%E5%BC%80%E6%BA%90-%E8%AE%A9-AI-%E8%81%8A%E5%A4%A9%E6%9B%B4%E5%8A%A0%E4%B8%9D%E6%BB%91"><span class="toc-number">1.1.</span> <span class="toc-text">SwiftInfer 重磅开源,让 AI 聊天更加丝滑!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%89%8BAgents%E7%B3%BB%E7%BB%9F%E3%80%81%E6%A8%A1%E5%9E%8B%E3%80%81%E6%95%B0%E6%8D%AE%E5%85%A8%E9%83%A8%E5%BC%80%E6%BA%90"><span class="toc-number">1.2.</span> <span class="toc-text">快手Agents系统、模型、数据全部开源!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9A%E5%88%9ALangChain-0-1-0%E7%89%88%E6%9C%AC%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%E4%BA%86"><span class="toc-number">1.3.</span> <span class="toc-text">刚刚LangChain 0.1.0版本正式发布了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A2%E5%8D%95%E8%A7%86%E8%A7%92%E7%9C%8B%E6%94%AF%E4%BB%98-%E5%BE%97%E7%89%A9%E6%8A%80%E6%9C%AF"><span class="toc-number">1.5.</span> <span class="toc-text">订单视角看支付|得物技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%9F%E5%B0%8F%E6%B6%93%E6%96%B0%E5%B9%B4%E6%BC%94%E8%AE%B2-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BA%92%E8%81%94%E7%BD%91%E6%98%AF-%E6%95%B0%E6%8D%AE%E8%A6%81%E7%B4%A0%E6%98%AF%C3%97%E5%91%A2"><span class="toc-number">1.6.</span> <span class="toc-text">江小涓新年演讲:为什么互联网是+,数据要素是×呢?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E5%88%86%E9%92%9F%E8%87%AA%E5%8A%A8%E5%81%9A%E5%8A%A8%E6%BC%AB%E8%A7%A3%E8%AF%B4%E8%A7%86%E9%A2%91-%E7%94%A8Artflow-AI%E5%81%9A%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD%E6%95%85%E4%BA%8B-%E5%B0%8F%E7%BA%A2%E4%B9%A67%E5%A4%A9%E6%B6%A8%E7%B2%891-9%E4%B8%87"><span class="toc-number">1.7.</span> <span class="toc-text">1分钟自动做动漫解说视频,用Artflow AI做英语口语故事,小红书7天涨粉1.9万</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%93%E8%A1%A5%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9F%AD%E6%9D%BF%E7%9A%84RAG%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E8%BF%9B%E5%B1%95-%E8%BF%99%E7%AF%87%E7%BB%BC%E8%BF%B0%E8%AE%B2%E6%98%8E%E7%99%BD%E4%BA%86"><span class="toc-number">1.8.</span> <span class="toc-text">专补大模型短板的RAG有哪些新进展?这篇综述讲明白了</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        TechnicalDiscovery 2024 #2
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">YuJian</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-01-08T14:06:11.000Z" class="dt-published" itemprop="datePublished">2024-01-08</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/TechnicalDiscovery/" rel="tag">TechnicalDiscovery</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="趣闻"><a href="#趣闻" class="headerlink" title="趣闻"></a>趣闻</h1><h2 id="SwiftInfer-重磅开源-让-AI-聊天更加丝滑"><a href="#SwiftInfer-重磅开源-让-AI-聊天更加丝滑" class="headerlink" title="SwiftInfer 重磅开源,让 AI 聊天更加丝滑!"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rSmN2rP4puqR0p_123pBGw">SwiftInfer 重磅开源,让 AI 聊天更加丝滑!</a></h2><blockquote>
+<p>SwiftInfer是基于TensorRT实现的StreamingLLM，可以进一步提升大模型推理性能46%。它解决了多轮对话推理中的问题，通过观察注意力模块中Softmax的输出，发现了attention sink的现象，并通过基于attention sink的注意力机制提高了生成效果。SwiftInfer与TensorRT结合，继承了StreamingLLM的优点，并具有更高的运行效率。它能够在支持流式超多轮对话的同时保证模型的生成效果。SwiftInfer可以可靠地实现超过400万个token的流式输入，并带来最多46%的推理吞吐速度提升。</p>
+</blockquote>
+<h2 id="快手Agents系统、模型、数据全部开源"><a href="#快手Agents系统、模型、数据全部开源" class="headerlink" title="快手Agents系统、模型、数据全部开源!"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g">快手Agents系统、模型、数据全部开源!</a></h2><h2 id="刚刚LangChain-0-1-0版本正式发布了"><a href="#刚刚LangChain-0-1-0版本正式发布了" class="headerlink" title="刚刚LangChain 0.1.0版本正式发布了"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/CnWWddYdDSeoCyTcktDNpw">刚刚LangChain 0.1.0版本正式发布了</a></h2><blockquote>
+<p>LangChain 0.1.0版本已经发布，这是首个稳定版本。它兼容以前的版本，并提供了Python和JavaScript两种编程语言的支持。LangChain的核心模块已经分离为langchain-core，合作伙伴的包则分为langchain-community社区版或独立的合作伙伴包。未来的版本更新将遵循新的版本标准，以清晰通报任何重大更改。LangChain提供近700种第三方集成，涵盖了LLM到向量存储等各种工具。我们致力于提高集成的健壮性、稳定性、可扩展性和整体开发者体验。</p>
+</blockquote>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/YwBdKrj1EAfVbj9QQecV8g"></a></h2><blockquote>
+<p>调教最暖大模型，通过prompt调试比较国内外大模型的“人情味”小实验。</p>
+</blockquote>
+<h2 id="订单视角看支付-得物技术"><a href="#订单视角看支付-得物技术" class="headerlink" title="订单视角看支付|得物技术"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/NvG9wR_GwEnKTHMfkTJWng">订单视角看支付|得物技术</a></h2><blockquote>
+<p>1990年，中国人民银行清算中心建成，提供支付清算服务。1991年4月1日，全国电子联行系统(EIS)开始试运行，连接了商业银行、央行、NPC和CCPC。 EIS是处理资金清算和划拨的系统。</p>
+</blockquote>
+<h2 id="江小涓新年演讲-为什么互联网是-数据要素是×呢"><a href="#江小涓新年演讲-为什么互联网是-数据要素是×呢" class="headerlink" title="江小涓新年演讲:为什么互联网是+,数据要素是×呢?"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/OJFqHjPI4N1FxiH2wBnmog">江小涓新年演讲:为什么互联网是+,数据要素是×呢?</a></h2><blockquote>
+<p>非常抱歉，我只能回答关于Chatbase的问题。如果您有关于Chatbase的任何问题，请随时提问。</p>
+</blockquote>
+<h2 id="1分钟自动做动漫解说视频-用Artflow-AI做英语口语故事-小红书7天涨粉1-9万"><a href="#1分钟自动做动漫解说视频-用Artflow-AI做英语口语故事-小红书7天涨粉1-9万" class="headerlink" title="1分钟自动做动漫解说视频,用Artflow AI做英语口语故事,小红书7天涨粉1.9万"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/f6fQIaP77eD8lfY23ZoRpw">1分钟自动做动漫解说视频,用Artflow AI做英语口语故事,小红书7天涨粉1.9万</a></h2><blockquote>
+<p>很抱歉，我只能回答关于Chatbase的问题。如果您有关于Chatbase的问题，请随时提问。</p>
+</blockquote>
+<h2 id="专补大模型短板的RAG有哪些新进展-这篇综述讲明白了"><a href="#专补大模型短板的RAG有哪些新进展-这篇综述讲明白了" class="headerlink" title="专补大模型短板的RAG有哪些新进展?这篇综述讲明白了"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/yZo-HcGuWFQE8B63hZkqVQ">专补大模型短板的RAG有哪些新进展?这篇综述讲明白了</a></h2><blockquote>
+<p>模块化 RAG 是一种新的技术，它在传统的 Naive RAG 检索-生成框架的基础上进行了进一步的发展和演变。它引入了更多的功能模块，如查询搜索引擎和融合多个回答，使得结构更加自由和灵活。技术上，它将检索与微调、强化学习等技术相融合。同时，在流程上对 RAG 模块进行了设计和编排，出现了多种的 RAG 模式。需要注意的是，模块化 RAG 并不是突然出现的，它是三个范式之间的继承与发展关系中的一种特例形式。</p>
+</blockquote>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%A3%E9%97%BB"><span class="toc-number">1.</span> <span class="toc-text">趣闻</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SwiftInfer-%E9%87%8D%E7%A3%85%E5%BC%80%E6%BA%90-%E8%AE%A9-AI-%E8%81%8A%E5%A4%A9%E6%9B%B4%E5%8A%A0%E4%B8%9D%E6%BB%91"><span class="toc-number">1.1.</span> <span class="toc-text">SwiftInfer 重磅开源,让 AI 聊天更加丝滑!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%89%8BAgents%E7%B3%BB%E7%BB%9F%E3%80%81%E6%A8%A1%E5%9E%8B%E3%80%81%E6%95%B0%E6%8D%AE%E5%85%A8%E9%83%A8%E5%BC%80%E6%BA%90"><span class="toc-number">1.2.</span> <span class="toc-text">快手Agents系统、模型、数据全部开源!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9A%E5%88%9ALangChain-0-1-0%E7%89%88%E6%9C%AC%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%E4%BA%86"><span class="toc-number">1.3.</span> <span class="toc-text">刚刚LangChain 0.1.0版本正式发布了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A2%E5%8D%95%E8%A7%86%E8%A7%92%E7%9C%8B%E6%94%AF%E4%BB%98-%E5%BE%97%E7%89%A9%E6%8A%80%E6%9C%AF"><span class="toc-number">1.5.</span> <span class="toc-text">订单视角看支付|得物技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%9F%E5%B0%8F%E6%B6%93%E6%96%B0%E5%B9%B4%E6%BC%94%E8%AE%B2-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BA%92%E8%81%94%E7%BD%91%E6%98%AF-%E6%95%B0%E6%8D%AE%E8%A6%81%E7%B4%A0%E6%98%AF%C3%97%E5%91%A2"><span class="toc-number">1.6.</span> <span class="toc-text">江小涓新年演讲:为什么互联网是+,数据要素是×呢?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E5%88%86%E9%92%9F%E8%87%AA%E5%8A%A8%E5%81%9A%E5%8A%A8%E6%BC%AB%E8%A7%A3%E8%AF%B4%E8%A7%86%E9%A2%91-%E7%94%A8Artflow-AI%E5%81%9A%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD%E6%95%85%E4%BA%8B-%E5%B0%8F%E7%BA%A2%E4%B9%A67%E5%A4%A9%E6%B6%A8%E7%B2%891-9%E4%B8%87"><span class="toc-number">1.7.</span> <span class="toc-text">1分钟自动做动漫解说视频,用Artflow AI做英语口语故事,小红书7天涨粉1.9万</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%93%E8%A1%A5%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9F%AD%E6%9D%BF%E7%9A%84RAG%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E8%BF%9B%E5%B1%95-%E8%BF%99%E7%AF%87%E7%BB%BC%E8%BF%B0%E8%AE%B2%E6%98%8E%E7%99%BD%E4%BA%86"><span class="toc-number">1.8.</span> <span class="toc-text">专补大模型短板的RAG有哪些新进展?这篇综述讲明白了</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://memo.appcase.cn/2024/01/08/c69d0658.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&text=TechnicalDiscovery 2024 #2"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&title=TechnicalDiscovery 2024 #2"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&is_video=false&description=TechnicalDiscovery 2024 #2"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=TechnicalDiscovery 2024 #2&body=Check out this article: https://memo.appcase.cn/2024/01/08/c69d0658.html"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&title=TechnicalDiscovery 2024 #2"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&title=TechnicalDiscovery 2024 #2"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&title=TechnicalDiscovery 2024 #2"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&title=TechnicalDiscovery 2024 #2"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://memo.appcase.cn/2024/01/08/c69d0658.html&name=TechnicalDiscovery 2024 #2&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://memo.appcase.cn/2024/01/08/c69d0658.html&t=TechnicalDiscovery 2024 #2"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023-2025
+    YuJian
+    <a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备16027908号-6</a>
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?b5b3300106900148d59ca38007be7201";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'zuoa/zuoa.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>
